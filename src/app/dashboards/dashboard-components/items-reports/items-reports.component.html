@@ -1,0 +1,71 @@
+<div class="card">
+    <div class="card-body">
+        <div class="float-left">
+            <h4>{{title}}</h4>        
+        </div>
+        <div class="float-right">
+            <nz-select 
+                style="width: 200px;" 
+                [(ngModel)]="selectedValue"
+                nzShowSearch 
+                nzAllowClear 
+                nzPlaceHolder="Filter By"
+                (ngModelChange)="filter($event)">
+                <nz-option 
+                    *ngFor="let c of categories" 
+                    [nzLabel]="c.name" 
+                    [nzValue]="c.id"></nz-option>
+            </nz-select>        
+        </div>
+    </div>
+
+    <div class="table-responsive">
+        <nz-table 
+            #headerTable  
+            nzShowPagination
+            [nzData]="data" 
+            [nzPageSize]="5" 
+            [nzScroll]="{ x: '240px' }"
+            class="table forms-table table-striped table-bordered"
+            [nzLoading]="isLoading"
+            *ngIf="data.length >= 1">
+            <thead>
+                <tr class="bg-light"> 
+                  <th *ngFor="let head of header; let i = index">
+                      {{head}}
+                  </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let d of headerTable.data" style="cursor: pointer;" (click)="getRecipes(d.item.itemreceipes)">
+                    <td>
+                        {{d.item.id}}
+                    </td>
+                    <td>
+                        {{d.order_id}}
+                    </td>                     
+                    <td>
+                        {{d.item.subcategory.category.name}}
+                    </td>
+                    <td>
+                        {{d.item.name}}
+                    </td>                       
+                    <td>
+                        {{d.item.price}}
+                    </td>                                             
+                    <td>
+                        {{d.totalitemamount}}
+                    </td>                        
+                </tr>
+            </tbody>
+        </nz-table>           
+    </div>        
+</div>
+
+<app-popup-details
+    [data]="itemRecipes"
+    [title]="lang.itemRecipesTxt"
+    [header]="popupHeader"
+    [isVisible]="isVisible"
+    (closeDV)="isVisible = $event"
+></app-popup-details>

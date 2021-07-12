@@ -1,0 +1,108 @@
+@font-face {
+    font-family: 'koken';
+    src: url('./../fonts/kokn.ttf');
+}
+
+/* ****************    **************** */
+// Global Styles
+/* ****************    **************** */
+
+body{
+    font-family: 'koken';
+}
+
+label{
+    margin-bottom: 0;
+}
+
+input{
+    text-align: right;
+}
+
+/* ****************    **************** */
+// Classes Styles
+/* ****************    **************** */
+
+.lang-ar{
+    direction: rtl;
+    text-align: right;
+}
+
+.m-b-10{
+    margin-bottom: 10px;
+}
+
+.page-title{
+    font-size: 30px;
+}
+
+.txt-red{
+    color: #d83939;
+    font-weight: bold;
+    direction: ltr;
+}
+
+/* ****************    **************** */
+// Ant Styles Reset
+/* ****************    **************** */
+
+.ant-form-item-label{
+    width: 100%;
+}
+
+.ant-form-item-label > label::after{
+    display: none;
+}
+
+.ant-input-group,
+.ant-input-affix-wrapper,
+.ant-select-selection__placeholder, 
+.ant-select-search__field__placeholder,
+.ant-select-dropdown-menu-item{
+    text-align: right;
+}
+
+.ant-notification-notice-close{
+    display: none;
+}
+
+.ant-notification-notice-icon{
+    position: relative;
+    top: 3px;
+    margin-left: 0;
+}
+
+.ant-notification-notice-closable .ant-notification-notice-message{
+    padding-right: 10px;
+}
+
+.ant-modal-close{
+    right: auto;
+    left: 0;
+}
+
+.ant-modal-footer{
+    display: none;
+}
+
+.table thead th, .table th,
+.ant-table-thead > tr, .ant-table-tbody > tr{
+    text-align: center;
+}
+
+.ant-pagination-item,
+.ant-pagination-prev, 
+.ant-pagination-jump-prev, 
+.ant-pagination-jump-next{
+    margin-right: auto;
+    margin-left: 8px;
+}
+
+.ant-pagination-prev, 
+.ant-pagination-next{
+    transform: rotate(180deg);
+}
+
+.ant-select-selection-selected-value{
+    float: right;
+}

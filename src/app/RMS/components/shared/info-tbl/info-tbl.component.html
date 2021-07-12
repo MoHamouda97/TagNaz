@@ -1,0 +1,46 @@
+<div class="card">
+    <div class="card-body">
+        <h4>{{title}}</h4>        
+    </div>
+    
+    <div class="table-responsive">
+        <nz-table 
+            #headerTable  
+            nzShowPagination
+            [nzData]="data" 
+            [nzPageSize]="5" 
+            [nzScroll]="{ x: '240px' }"
+            class="table forms-table table-striped table-bordered"
+            *ngIf="data.length >= 1">
+            <thead>
+              <tr class="bg-light"> 
+                <th *ngFor="let head of header; let i = index">
+                    {{head}}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let allData of headerTable.data; let i = index" >
+                    <td 
+                        *ngFor="let d of allData | render" 
+                        class="hide-long-text"
+                        [class.txt-red]="allData[d] < 0"
+                        [class.pointer]="d == 'expense' || d == 'loan'"
+                        (click)="getDetails(d, allData['modifiedd'])">{{allData[d] | round}}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+        <nz-table [nzData]="data" *ngIf="data.length == 0"></nz-table>              
+    </div>
+</div>
+
+
+<app-expensess-details
+    [data]="expensessData"
+    [isVisible]="isVisible"
+    (closeDV)="isVisible = $event"></app-expensess-details>
+
+<app-loans-info
+    [data]="LoansData"
+    [isVisible]="isLoanVisible"
+    (closeDV)="isLoanVisible = $event"></app-loans-info>

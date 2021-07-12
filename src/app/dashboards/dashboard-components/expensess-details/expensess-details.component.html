@@ -1,0 +1,35 @@
+<nz-modal
+    [(nzVisible)]="isVisible" 
+    [nzTitle]="'تفاصيل المصروفات'" 
+    (nzOnCancel)="handleCancel()"
+    nzWidth="60%"
+    [nzStyle]="{ top: '20px' }"
+    nzClassName="lang-ar">
+    <div class="table-responsive">
+        <nz-table 
+            #headerTable  
+            nzShowPagination
+            [nzData]="data" 
+            [nzPageSize]="5" 
+            [nzScroll]="{ x: '240px' }"
+            class="table forms-table table-striped table-bordered"
+            *ngIf="data.length >= 1">
+            <thead>
+              <tr class="bg-light"> 
+                <th *ngFor="let head of header; let i = index">
+                    {{head}}
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let allData of headerTable.data; let i = index" >
+                    <td>{{allData.id}}</td>
+                    <td>{{allData.category.name}}</td>
+                    <td>{{allData.name}}</td>
+                    <td>{{allData.price}}</td>
+                </tr>
+            </tbody>
+        </nz-table>
+        <nz-table [nzData]="data" *ngIf="data.length == 0"></nz-table>              
+    </div>
+</nz-modal>

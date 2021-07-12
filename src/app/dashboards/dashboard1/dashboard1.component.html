@@ -1,0 +1,194 @@
+<!-- ============================================================== -->
+<!-- Info card -->
+<!-- ============================================================== -->
+<app-info-card 
+    [totMonthSales]="totMonthSales$ | async"
+    [totWeekSales]="totWeekSales$ | async"></app-info-card>
+<!-- ============================================================== -->
+<!-- Info card -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Marketers & PlatForms -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-6">
+        <h4>{{lang.marketersTxt}}</h4>
+
+        <app-stats-info
+            [infoClass]="'btn-info'"
+            [infoIcon]="'mdi mdi-store'"
+            [infoTxt]="marketersOrders[0]['marketer']['name']"
+            [infoTotal]="marketersOrders[0]['Ordertotals']"
+        ></app-stats-info>
+    </div>
+
+    <div class="col-md-6" *ngFor="let p of platFormsOrders, let i = index">
+        <h4>{{lang.platFormsTxt}}</h4>
+
+        <app-stats-info
+            [infoClass]="'btn-danger'"
+            [infoIcon]="'mdi mdi-chair-school'"
+            [infoTxt]="p['platform']['name']"
+            [infoTotal]="p['Ordertotals']"
+        ></app-stats-info>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Marketers & PlatForms -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Payaments -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-12">
+        <h4>{{lang.paymentsTxt}}</h4>
+    </div>
+
+    <div class="col-md-6" *ngFor="let p of payments, let i = index">     
+        <app-stats-info
+            [infoClass]="'btn-warning'"
+            [infoIcon]="'fas fa-money-bill-alt'"
+            [infoTxt]="p['paymenttype']['name']"
+            [infoTotal]="p['Ordertotals']"
+        ></app-stats-info>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Payaments -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Expensess -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-12">
+        <h4>{{lang.expensesTxt}}</h4>
+    </div>
+
+    <div class="col-md-6">     
+        <app-stats-info
+            [infoClass]="'btn-danger'"
+            [infoIcon]="'fas fa-money-bill-alt'"
+            [infoTxt]="'المصروفات'"
+            [infoTotal]="expensessTotal"
+        ></app-stats-info>
+    </div>
+
+    <div class="col-md-6">     
+        <app-stats-info
+            [infoClass]="'btn-danger'"
+            [infoIcon]="'fas fa-money-bill-alt'"
+            [infoTxt]="'السلف'"
+            [infoTotal]="loansTotal"
+        ></app-stats-info>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Expensess -->
+<!-- ============================================================== -->
+
+<div class="row">
+    <div class="col-md-6 col-lg-6">
+        <!-- ============================================================== -->
+        <!-- month sales chart -->
+        <!-- ============================================================== -->
+        <app-bar-chart 
+            [sales]="monthChart$ | async" 
+            [color]="'#4798e8'" 
+            [title]="lang.monthSalesTxt" 
+            [type]="'line'"
+            [selector]="'month-chart'"
+            [orderLabelsKey]="'id'"
+            [orderTotalKey]="'Ordertotals'"></app-bar-chart>
+        <!-- ============================================================== -->
+        <!-- month sales chart -->
+        <!-- ============================================================== -->
+    </div>
+    <div class="col-md-6 col-lg-6">
+        <!-- ============================================================== -->
+        <!-- week sales chart -->
+        <!-- ============================================================== -->
+        <app-bar-chart 
+            [sales]="weekChart$ | async" 
+            [color]="'#22c6ab'" 
+            [title]="lang.weekSalesTxt" 
+            [type]="'line'"
+            [selector]="'week-chart'"
+            [orderLabelsKey]="'id'"
+            [orderTotalKey]="'Ordertotals'"></app-bar-chart>
+        <!-- ============================================================== -->
+        <!-- week sales chart -->
+        <!-- ============================================================== -->
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- month & week details sales chart -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-6 col-lg-6">
+
+        <app-bar-chart 
+            [sales]="allMonthChartData" 
+            [color]="'#4798e8'" 
+            [title]="lang.monthSalesDetailsTxt" 
+            [selector]="'month-details-chart'"
+            [type]="'pie'"
+            [orderLabelsKey]="'catname'"
+            [orderTotalKey]="'SumTotal'"></app-bar-chart>
+    </div>
+    <div class="col-md-6 col-lg-6">
+        <app-bar-chart 
+            [sales]="allWeekChartData" 
+            [color]="'#22c6ab'" 
+            [title]="lang.weekSalesDetailsTxt" 
+            [selector]="'week-details-chart'"
+            [type]="'pie'"
+            [orderLabelsKey]="'catname'"
+            [orderTotalKey]="'SumTotal'"></app-bar-chart>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!--  month & week details sales chart -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- month expensess -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-6">
+
+        <app-bar-chart 
+            [sales]="expensesCat$ | async" 
+            [color]="'#4798e8'" 
+            [title]="lang.expensesChartTxt" 
+            [selector]="'expenses-cat-chart'"
+            [type]="'pie'"
+            [orderLabelsKey]="'categoryname'"
+            [orderTotalKey]="'SumTotal'"></app-bar-chart>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!--  month expensess -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- most selling items -->
+<!-- ============================================================== -->
+<app-items-reports [title]="lang.mostSellingTxt" [data]="itemsDetails$ | async" [categories]="itemsCategories$ | async"></app-items-reports>
+<!-- ============================================================== -->
+<!-- most selling items -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Income & Expenses -->
+<!-- ============================================================== -->
+<app-info-tbl
+    [title]="lang.moneyFlowTxt"
+    [header]="incomeExpensesHeader"
+    [data]="incomeExpenses"></app-info-tbl>
+<!-- ============================================================== -->
+<!-- Income & Expenses -->
+<!-- ============================================================== -->
