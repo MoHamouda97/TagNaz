@@ -5,8 +5,6 @@ import { ActivatedRouteSnapshot, Resolve, RouterStateSnapshot } from "@angular/r
 import { first, tap, filter, finalize } from 'rxjs/operators';
 import { AppState } from 'src/app/apps/email/app.state';
 import { select, Store } from '@ngrx/store';
-import { loadSalesReports } from 'src/app/RMS/store/sales-reports/sales-reports.actions';
-import { isSalesReportsLoaded } from 'src/app/RMS/store/sales-reports/sales-reports.selectors';
 
 @Injectable()
 
@@ -16,7 +14,7 @@ export class SalesReportsResolver implements Resolve<any> {
     constructor(private stroe: Store<AppState>) {}
 
     resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) : Observable<any> {
-        return this.stroe
+        return /*this.stroe
             .pipe(
                 select(isSalesReportsLoaded),
                 tap(SalesReportsLoaded => {
@@ -28,7 +26,7 @@ export class SalesReportsResolver implements Resolve<any> {
                 filter(SalesReportsLoaded => SalesReportsLoaded),
                 first(),
                 finalize(() => this.loading = false)
-            )
+            )*/
     }
 
 }

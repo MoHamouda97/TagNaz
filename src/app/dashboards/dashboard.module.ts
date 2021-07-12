@@ -45,35 +45,12 @@ import {
 } from './dashboard-components';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
-import { ItemsReportsEffect } from '../RMS/store/items-reports/items-reports.effects';
-import { ItemsReportsReducer } from '../RMS/store/items-reports/reducers/items-reports.reducer';
-import { MonthReportsEffect } from '../RMS/store/month-reports/month-reports.effects';
-import { MonthReportsReducer } from '../RMS/store/month-reports/reducers/month-reports.reducer';
-import { SalesReportsReducer } from '../RMS/store/sales-reports/reducers/sales-reports.reducer';
-import { SalesReportsEffect } from '../RMS/store/sales-reports/sales-reports.effects';
-import { WeekReportsReducer } from '../RMS/store/week-reports/reducers/week-reports.reducer';
-import { WeekReportsEffect } from '../RMS/store/week-reports/week-reports.effects';
-import { ItemsReportsResolver } from '../authentication/login/services/items-reports.resolver';
-import { MonthReportsResolver } from '../authentication/login/services/month-reports.resolver';
-import { SalesReportsResolver } from '../authentication/login/services/sales-reports.resolver';
-import { WeekReportsResolver } from '../authentication/login/services/week-reports.resolver';
 import { SharedModule } from 'src/module/shared.module';
 import { ItemsReportsComponent } from './dashboard-components/items-reports/items-reports.component';
-import { OtherReportsEffect } from '../RMS/store/other-reports/other-reports.effects';
-import { OtherReportsReducer } from '../RMS/store/other-reports/reducers/other-reports.reducer';
-import { OtherReportsResolver } from '../authentication/login/services/other-reports.resolver';
-import { IncomeExpensesReportEffect } from '../RMS/store/income-expenses/income-expenses.effects';
-import { IncomeExpensesReportReducer } from '../RMS/store/income-expenses/reducers/income-expenses.reducer';
-import { IncomeExpensesReportResolver } from '../authentication/login/services/income-expenses.resolver';
-import { ExpensesReportsResolver } from '../authentication/login/services/expenses-reports.resolver';
-import { ExpensesReportsEffect } from '../RMS/store/expenses-reports/expenses-reports.effects';
-import { ExpensesReportsReducer } from '../RMS/store/expenses-reports/reducers/expenses-reports.reducer';
-import { LoansReportsResolver } from '../authentication/login/services/loans-reports.resolver';
-import { LoansReportsEffect } from '../RMS/store/loans-reports/loans-reports.effects';
-import { LoansReportsReducer } from '../RMS/store/loans-reports/reducers/loans-reports.reducer';
-import { ExpensesCatReportsResolver } from '../authentication/login/services/expenses-cat-reports.resolver';
-import { ExpensesCatReportsEffect } from '../RMS/store/expenses-cat-reports/expenses-cat-reports.effects';
-import { ExpensesCatReportsReducer } from '../RMS/store/expenses-cat-reports/reducers/expenses-cat-reports.reducer';
+import { TransactionsResolver } from './dashboard1/services/transactions.resolver';
+import { AllTransactionsResolver } from './dashboard1/services/all-transactions.resolver';
+import { OrderReportsResolver } from './dashboard1/services/order-reports.resolver';
+
 
 @NgModule({
   imports: [
@@ -87,26 +64,10 @@ import { ExpensesCatReportsReducer } from '../RMS/store/expenses-cat-reports/red
     CalendarModule.forRoot(),
     NgxChartsModule,
     NgxDatatableModule,
-    EffectsModule.forFeature([
-      SalesReportsEffect,
-      ItemsReportsEffect,
-      MonthReportsEffect,
-      WeekReportsEffect,
-      OtherReportsEffect,
-      IncomeExpensesReportEffect,
-      ExpensesReportsEffect,
-      LoansReportsEffect,
-      ExpensesCatReportsEffect,
+    /*EffectsModule.forFeature([
+
     ]),
-    StoreModule.forFeature('SalesReports', SalesReportsReducer), 
-    StoreModule.forFeature('ItemsReports', ItemsReportsReducer), 
-    StoreModule.forFeature('MonthReports', MonthReportsReducer), 
-    StoreModule.forFeature('WeekReports', WeekReportsReducer), 
-    StoreModule.forFeature('OtherReports', OtherReportsReducer),
-    StoreModule.forFeature('IncomeExpensesReport', IncomeExpensesReportReducer), 
-    StoreModule.forFeature('ExpensesReports', ExpensesReportsReducer), 
-    StoreModule.forFeature('LoansReports', LoansReportsReducer), 
-    StoreModule.forFeature('ExpensesCatReports', ExpensesCatReportsReducer), 
+    StoreModule.forFeature('SalesReports', SalesReportsReducer),*/
     SharedModule
   ],
   declarations: [
@@ -139,15 +100,9 @@ import { ExpensesCatReportsReducer } from '../RMS/store/expenses-cat-reports/red
     ItemsReportsComponent
   ],
   providers: [
-    SalesReportsResolver,
-    ItemsReportsResolver,
-    MonthReportsResolver,
-    WeekReportsResolver,
-    OtherReportsResolver,
-    IncomeExpensesReportResolver,
-    ExpensesReportsResolver,
-    LoansReportsResolver,
-    ExpensesCatReportsResolver,
+    TransactionsResolver,
+    AllTransactionsResolver,
+    OrderReportsResolver
   ]
 })
 export class DashboardModule {}

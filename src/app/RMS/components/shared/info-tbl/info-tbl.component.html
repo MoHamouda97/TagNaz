@@ -23,24 +23,10 @@
                 <tr *ngFor="let allData of headerTable.data; let i = index" >
                     <td 
                         *ngFor="let d of allData | render" 
-                        class="hide-long-text"
-                        [class.txt-red]="allData[d] < 0"
-                        [class.pointer]="d == 'expense' || d == 'loan'"
-                        (click)="getDetails(d, allData['modifiedd'])">{{allData[d] | round}}</td>
+                        class="hide-long-text">{{allData[d]}}</td>
                 </tr>
             </tbody>
         </nz-table>
         <nz-table [nzData]="data" *ngIf="data.length == 0"></nz-table>              
-    </div>
+    </div>  
 </div>
-
-
-<app-expensess-details
-    [data]="expensessData"
-    [isVisible]="isVisible"
-    (closeDV)="isVisible = $event"></app-expensess-details>
-
-<app-loans-info
-    [data]="LoansData"
-    [isVisible]="isLoanVisible"
-    (closeDV)="isLoanVisible = $event"></app-loans-info>

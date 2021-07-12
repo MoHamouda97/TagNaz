@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  endpoint: 'https://wokhouse.codesroots.com/api'
+  endpoint: 'https://credit.codesroots.com/api'
 };
