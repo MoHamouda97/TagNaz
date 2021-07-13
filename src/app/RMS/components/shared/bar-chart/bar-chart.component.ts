@@ -1,6 +1,7 @@
 import { AfterViewInit, Component, Input, OnInit } from '@angular/core';
 import * as c3 from 'c3';
 import Chart from 'chart.js';
+import { GenericService } from 'src/services/generic/generic.service';
 
 @Component({
   selector: 'app-bar-chart',
@@ -35,21 +36,27 @@ export class BarChartComponent implements OnInit, AfterViewInit {
 
   datasets: any[] = [];
 
-  constructor() { }
+  constructor(private service: GenericService) { }
 
   ngOnInit() {
-    (this.selector == 'week-chart') 
-    ? this.orderLabels = [
-      'الجمعة',
-      'السبت',
-      'الأحد',
-      'الاثنين',
-      'الثلاثاء',
-      'الاربعاء',
-      'الخميس',
-    ].reverse() : this.orderLabels = this.sales.map(s => `${s[this.orderLabelsKey]}`);
+    if (this.selector == 'week-chart') {
+      this.orderLabels = [
+        'الجمعة',
+        'السبت',
+        'الأحد',
+        'الاثنين',
+        'الثلاثاء',
+        'الاربعاء',
+        'الخميس',
+      ]
+    } else {
+      (this.selector == 'month-chart') ? this.orderLabels = this.sales.map(s => this.service.formatDate(s[this.orderLabelsKey])) : this.orderLabels = this.sales.map(s => `${s[this.orderLabelsKey]} - ${s[this.orderTotalKey].toFixed(2)}`);
+    }
 
     this.orderTotal = this.sales.map(s => parseFloat(s[this.orderTotalKey].toFixed(2)));
+
+    (this.selector == 'week-chart' || this.selector == 'month-chart') && this.orderTotal.reverse();
+    (this.selector == 'week-chart' || this.selector == 'month-chart') && this.orderLabels.reverse();    
   }
 
   ngAfterViewInit() {
