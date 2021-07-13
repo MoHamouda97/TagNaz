@@ -25,6 +25,15 @@ export class Dashboard1Component implements OnInit {
     'عدد الطلبات',
     'اجمالي الطلبات',
     'اجمالي الارباح',
+    'صافي الربح'
+  ];
+
+  headerComp: string[] = [
+    'اسم الباقة',
+    'عدد الطلبات',
+    'اجمالي الطلبات',
+    'اجمالي الارباح',
+    'صافي الربح'
   ]
 
   constructor(private store: Store<AppState>, private route: ActivatedRoute) {}
@@ -52,8 +61,8 @@ export class Dashboard1Component implements OnInit {
   createObject(data: any[], type) {
     let objects: any[] = 
     (type == 'comp') 
-      ? data.map(val => {return {package: (Boolean(val["package"])) ? val["package"]["company"]['name'] : '', Ordertotals: val["Ordertotals"], Profittotals: val["Profittotals"]}})
-      : data.map(val => {return {package: (Boolean(val["user"])) ? val["user"]["username"] : '', OrdersCount: val["OrdersCount"], Ordertotals: val["Ordertotals"], Profittotals: val["Profittotals"]}})
+      ? data.map(val => {return {package: (Boolean(val["package"])) ? val["package"]["company"]['name'] : '', OrdersCount: val['OrdersCount'], Ordertotals: val["Ordertotals"], Profittotals: val["Profittotals"], profit: val["Ordertotals"] - val["Profittotals"]}})
+      : data.map(val => {return {package: (Boolean(val["user"])) ? val["user"]["username"] : '', OrdersCount: val["OrdersCount"], Ordertotals: val["Ordertotals"], Profittotals: val["Profittotals"], profit: val["Ordertotals"] - val["Profittotals"]}})
     return objects;
   }
 
