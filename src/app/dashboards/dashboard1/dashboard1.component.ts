@@ -13,6 +13,7 @@ export class Dashboard1Component implements OnInit {
   lang: any = lang.ar
 
   totTransactions: any = 0;
+  totProfit: any = 0;
   transactions: any[] = [];
   reports: any[] = [];
   weekordersByCompaniesForWeek: any[] = [];
@@ -41,7 +42,6 @@ export class Dashboard1Component implements OnInit {
   ngOnInit() {
     this.route.data.subscribe(
       res => {
-        console.log(res.reports)
         this.totTransactions = res["transactionsTot"]["trandata"][0]["Transactionstotals"];
         this.transactions = this.createTransactionsObject(res.AllTransactions.trandata);
         this.reports = res.reports;
@@ -49,6 +49,7 @@ export class Dashboard1Component implements OnInit {
         this.monthordersByCompaniesForMonth = this.createObject(this.reports["monthordersByCompaniesForMonth"], 'comp');
         this.monthordersByUsersForMonth = this.createObject(this.reports["monthordersByUsersForMonth"], 'user');
         this.weekordersByUsersForWeek = this.createObject(this.reports["weekordersByUsersForWeek"], 'user');
+        this.totProfit = this.reports['monthorders'][0]['Ordertotals'] - this.totTransactions;
       }
     )
   }

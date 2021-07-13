@@ -6,17 +6,52 @@
         <h4>{{lang.transactionsTxt}}</h4>
     </div>
 
-    <div class="col-md-12">     
+    <div class="col-md-6">     
+        <app-stats-info
+            [infoClass]="'btn-success'"
+            [infoIcon]="'fas fa-exchange-alt'"
+            [infoTxt]="lang.totTxt"
+            [infoTotal]="totTransactions"
+        ></app-stats-info>
+    </div>
+
+    <div class="col-md-6">     
         <app-stats-info
             [infoClass]="'btn-success'"
             [infoIcon]="'fas fa-money-bill-alt'"
-            [infoTxt]="lang.totTxt"
-            [infoTotal]="totTransactions"
+            [infoTxt]="lang.totProfitTxt"
+            [infoTotal]="totProfit"
         ></app-stats-info>
     </div>
 </div>
 <!-- ============================================================== -->
 <!-- Toatl Transactions -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Total Orders Count -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-6">
+        <app-stats-info
+            [infoClass]="'btn-info'"
+            [infoIcon]="'fas fa-hand-paper'"
+            [infoTxt]="lang.totMonthCount"
+            [infoTotal]="reports['monthorders'][0]['OrdersCount']"
+        ></app-stats-info>
+    </div>    
+    
+    <div class="col-md-6">
+        <app-stats-info
+            [infoClass]="'btn-success'"
+            [infoIcon]="'fas fa-hand-paper'"
+            [infoTxt]="lang.totWeekCount"
+            [infoTotal]="reports['weekorders'][0]['OrdersCount']"
+        ></app-stats-info>
+    </div>    
+</div>
+<!-- ============================================================== -->
+<!-- Total Orders Count -->
 <!-- ============================================================== -->
 
 <!-- ============================================================== -->
