@@ -1,0 +1,183 @@
+<!-- ============================================================== -->
+<!-- Toatl Transactions -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-12">
+        <h4>{{lang.transactionsTxt}}</h4>
+    </div>
+
+    <div class="col-md-6">     
+        <app-stats-info
+            [infoClass]="'btn-success'"
+            [infoIcon]="'fas fa-exchange-alt'"
+            [infoTxt]="lang.totTxt"
+            [infoTotal]="totTransactions"
+        ></app-stats-info>
+    </div>
+
+    <div class="col-md-6">     
+        <app-stats-info
+            [infoClass]="'btn-success'"
+            [infoIcon]="'fas fa-money-bill-alt'"
+            [infoTxt]="lang.totProfitTxt"
+            [infoTotal]="totProfit"
+        ></app-stats-info>
+    </div>
+</div>
+<!-- ============================================================== -->
+<!-- Toatl Transactions -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Total Orders Count -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-6">
+        <app-stats-info
+            [infoClass]="'btn-info'"
+            [infoIcon]="'fas fa-hand-paper'"
+            [infoTxt]="lang.totMonthCount"
+            [infoTotal]="reports['monthorders'][0]['OrdersCount']"
+        ></app-stats-info>
+    </div>    
+    
+    <div class="col-md-6">
+        <app-stats-info
+            [infoClass]="'btn-success'"
+            [infoIcon]="'fas fa-hand-paper'"
+            [infoTxt]="lang.totWeekCount"
+            [infoTotal]="reports['weekorders'][0]['OrdersCount']"
+        ></app-stats-info>
+    </div>    
+</div>
+<!-- ============================================================== -->
+<!-- Total Orders Count -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Total Orders -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-6">
+        <app-stats-info
+            [infoClass]="'btn-info'"
+            [infoIcon]="'mdi mdi-sale'"
+            [infoTxt]="lang.totMonthSales"
+            [infoTotal]="reports['monthorders'][0]['Ordertotals']"
+        ></app-stats-info>
+    </div>    
+    
+    <div class="col-md-6">
+        <app-stats-info
+            [infoClass]="'btn-success'"
+            [infoIcon]="'mdi mdi-sale'"
+            [infoTxt]="lang.totWeekSales"
+            [infoTotal]="reports['weekorders'][0]['Ordertotals']"
+        ></app-stats-info>
+    </div>    
+</div>
+<!-- ============================================================== -->
+<!-- Total Orders -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Total Profits -->
+<!-- ============================================================== -->
+<div class="row">
+    <div class="col-md-6">
+        <app-stats-info
+            [infoClass]="'btn-info'"
+            [infoIcon]="'fas fa-money-bill-alt'"
+            [infoTxt]="lang.totMonthProfit"
+            [infoTotal]="totMonthProfit"
+        ></app-stats-info>
+    </div>    
+    
+    <div class="col-md-6">
+        <app-stats-info
+            [infoClass]="'btn-success'"
+            [infoIcon]="'fas fa-money-bill-alt'"
+            [infoTxt]="lang.totWeekProfit"
+            [infoTotal]="totWeekProfit"
+        ></app-stats-info>
+    </div>    
+</div>
+<!-- ============================================================== -->
+<!-- Total Profits -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Sales Line Chart -->
+<!-- ============================================================== -->
+
+<div class="row">
+    <div class="col-md-6">
+        <app-bar-chart 
+            [sales]="reports['monthordersForchart']" 
+            [color]="'#4798e8'" 
+            [title]="lang.monthSalesTxt" 
+            [type]="'line'"
+            [selector]="'month-chart'"
+            [orderLabelsKey]="'modified'"
+            [orderTotalKey]="'Ordertotals'"></app-bar-chart>
+    </div>
+
+    <div class="col-md-6">
+        <app-bar-chart 
+            [sales]="reports['weekordersForchart']" 
+            [color]="'#4798e8'" 
+            [title]="lang.weekSalesTxt" 
+            [type]="'line'"
+            [selector]="'week-chart'"
+            [orderLabelsKey]="'id'"
+            [orderTotalKey]="'Ordertotals'"></app-bar-chart>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- Sales Line Chart -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Comp Sales Line Chart -->
+<!-- ============================================================== -->
+
+<div class="row">
+    <div class="col-md-6">
+        <app-info-tbl [title]="lang.monthCompSalesTxt" [header]="headerComp" [data]="monthordersByCompaniesForMonth"></app-info-tbl>
+    </div>
+
+    <div class="col-md-6">
+        <app-info-tbl [title]="lang.weekCompSalesTxt" [header]="headerComp" [data]="weekordersByCompaniesForWeek"></app-info-tbl>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- Comp Sales Line Chart -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- User Sales -->
+<!-- ============================================================== -->
+
+<div class="row">
+    <div class="col-md-6">
+        <app-info-tbl [title]="lang.userMonthOrderTxt" [header]="header" [data]="monthordersByUsersForMonth"></app-info-tbl>
+    </div>
+
+    <div class="col-md-6">
+        <app-info-tbl [title]="lang.userweekOrderTxt" [header]="header" [data]="weekordersByUsersForWeek"></app-info-tbl>
+    </div>
+</div>
+
+<!-- ============================================================== -->
+<!-- User Sales -->
+<!-- ============================================================== -->
+
+<!-- ============================================================== -->
+<!-- Transactions by Users -->
+<!-- ============================================================== -->
+<app-items-reports [title]="lang.mostUserTxt" [data]="transactions"></app-items-reports>
+<!-- ============================================================== -->
+<!-- Transactions by Users -->
+<!-- ============================================================== -->

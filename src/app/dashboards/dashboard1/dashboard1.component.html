@@ -6,23 +6,18 @@
         <h4>{{lang.transactionsTxt}}</h4>
     </div>
 
-    <div class="col-md-6">     
-        <app-stats-info
-            [infoClass]="'btn-success'"
-            [infoIcon]="'fas fa-exchange-alt'"
-            [infoTxt]="lang.totTxt"
-            [infoTotal]="totTransactions"
-        ></app-stats-info>
+    <div class="col-md-12">  
+        <a routerLink="/transactions/all-trans">
+            <app-stats-info
+                [infoClass]="'btn-success'"
+                [infoIcon]="'fas fa-exchange-alt'"
+                [infoTxt]="lang.totTxt"
+                [infoTotal]="totTransactions"
+            ></app-stats-info>
+        </a>   
     </div>
 
-    <div class="col-md-6">     
-        <app-stats-info
-            [infoClass]="'btn-success'"
-            [infoIcon]="'fas fa-money-bill-alt'"
-            [infoTxt]="lang.totProfitTxt"
-            [infoTotal]="totProfit"
-        ></app-stats-info>
-    </div>
+   
 </div>
 <!-- ============================================================== -->
 <!-- Toatl Transactions -->
@@ -118,7 +113,7 @@
             [title]="lang.monthSalesTxt" 
             [type]="'line'"
             [selector]="'month-chart'"
-            [orderLabelsKey]="'modified'"
+            [orderLabelsKey]="'created'"
             [orderTotalKey]="'Ordertotals'"></app-bar-chart>
     </div>
 

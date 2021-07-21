@@ -25,4 +25,15 @@ export class TransactionssService {
       )
   }
 
+  getTrancsactions(page) : Observable<any> {    
+    return this.http.get(`${environment.endpoint}/Transactions/index.json?page=${page}`)
+      .pipe(
+        shareReplay()
+      )
+  }
+
+  filterTransactions(filter) {
+    return this.http.post(`${environment.endpoint}/Transactions.json`, filter)
+  }
+
 }

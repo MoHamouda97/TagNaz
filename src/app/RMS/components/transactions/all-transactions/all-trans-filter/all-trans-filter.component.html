@@ -1,0 +1,44 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="row">
+                <div class="col">
+                    <nz-select 
+                        style="width: 100%;" 
+                        [(ngModel)]="selectedUser"
+                        nzShowSearch 
+                        nzAllowClear 
+                        nzPlaceHolder="Filter By office"
+                        (ngModelChange)="filter('[Filter][office_id]', $event)">
+                        <nz-option 
+                            *ngFor="let user of users" 
+                            [nzLabel]="user[1]" 
+                            [nzValue]="user[0]"></nz-option>
+                    </nz-select>                     
+                </div>
+                <div class="col">
+                    <nz-select 
+                        style="width: 100%;" 
+                        nzShowSearch 
+                        nzAllowClear 
+                        nzPlaceHolder="Filter By user"
+                        (ngModelChange)="filter($event)">
+                        <nz-option 
+                            *ngFor="let user of users" 
+                            [nzLabel]="user[1]" 
+                            [nzValue]="user[0]"></nz-option>
+                    </nz-select>                     
+                </div>
+                <div class="col">
+                    <input nz-input type="number" min="0" placeholder="Filter by value" />
+                </div>
+                <div class="col">
+                    <input nz-input type="number" min="0" placeholder="Filter by last credit" />
+                </div>
+                <div class="col">
+                    <nz-date-picker></nz-date-picker>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

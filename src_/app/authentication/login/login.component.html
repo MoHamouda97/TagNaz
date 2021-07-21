@@ -1,0 +1,69 @@
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center" style="background:url(assets/images/big/auth-bg.jpg) no-repeat center center;">
+    <div class="auth-box">
+        <div id="loginform" [ngClass]="{'d-none': recoverform}">
+            <div class="logo">
+                <span class="db">
+                    <img src="assets/images/logo-icon.png" alt="logo" class="m-b-10" />
+                </span>
+                <h5 class="font-medium m-b-20">{{lang.loginFormTxt}}</h5>
+            </div>
+            <!-- Form -->
+            <div class="row">
+                <div class="col-12">
+                    <form nz-form autocomplete="off" [formGroup]="loginForm" class="form-horizontal m-t-20" id="loginform">
+                        <div class="form-group mb-3">
+                            <nz-form-label nzRequired>
+                                <label for="userName">
+                                    {{lang.lblUsername}}
+                                </label>
+                            </nz-form-label>
+                            <div class="input-group-lg">
+                                <nz-input-group nzPrefixIcon="user">
+                                    <input  
+                                        class="form-control" 
+                                        nz-input 
+                                        type="text"
+                                        placeholder="{{lang.lblUsername}}"
+                                        formControlName="username" 
+                                        id="userName" />                                             
+                                </nz-input-group >
+                            </div>                             
+                        </div>
+
+                        <div class="form-group mb-3">
+                            <nz-form-label nzRequired>
+                                <label for="pwp">
+                                    {{lang.lblPwp}}
+                                </label>
+                            </nz-form-label>
+                            <div class="input-group-lg">
+                                <nz-input-group nzPrefixIcon="lock">
+                                    <input  
+                                        class="form-control" 
+                                        nz-input 
+                                        type="password"
+                                        placeholder="{{lang.lblPwp}}"
+                                        formControlName="password" 
+                                        id="pwp" />                                             
+                                </nz-input-group >
+                            </div>                             
+                        </div>
+
+                        <div class="form-group text-center">
+                            <div class="col-xs-12 p-b-20">
+                                <button 
+                                    class="btn btn-block btn-lg btn-info" 
+                                    matRipple
+                                    [disabled]="!loginForm.valid"
+                                    (click)="login()">
+                                    <i nz-icon nzType="loading" nzTheme="outline" *ngIf="isSignIn"></i>
+                                    {{lang.loginFormTxt}}
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

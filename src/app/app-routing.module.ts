@@ -15,6 +15,10 @@ export const Approutes: Routes = [
         loadChildren: () => import('./dashboards/dashboard.module').then(m => m.DashboardModule)
       },
       {
+        path: 'transactions',
+        loadChildren: () => import('./RMS/components/transactions/transactions.module').then(m => m.TransactionsModule)
+      },
+      {
         path: 'starter',
         loadChildren: () => import('./starter/starter.module').then(m => m.StarterModule)
       },

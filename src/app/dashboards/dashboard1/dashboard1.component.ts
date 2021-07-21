@@ -54,7 +54,6 @@ export class Dashboard1Component implements OnInit {
         this.totProfit = this.reports['monthorders'][0]['Ordertotals'] - this.totTransactions;
         this.totMonthProfit = this.reports['monthorders'][0]['Ordertotals'] - this.reports['monthorders'][0]['Profittotals'];
         this.totWeekProfit = this.reports['weekorders'][0]['Ordertotals'] - this.reports['weekorders'][0]['Profittotals'];
-        console.log(res.reports)
       }
     )
   }

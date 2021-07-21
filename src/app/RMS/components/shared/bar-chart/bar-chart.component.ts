@@ -41,13 +41,14 @@ export class BarChartComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     if (this.selector == 'week-chart') {
       this.orderLabels = [
-        'الجمعة',
-        'السبت',
-        'الأحد',
-        'الاثنين',
-        'الثلاثاء',
-        'الاربعاء',
         'الخميس',
+        'الاربعاء',
+        'الثلاثاء',
+        'الاثنين',
+        'الأحد',
+        'السبت',
+        'الجمعة',
+ 
       ]
     } else {
       (this.selector == 'month-chart') ? this.orderLabels = this.sales.map(s => this.service.formatDate(s[this.orderLabelsKey])) : this.orderLabels = this.sales.map(s => `${s[this.orderLabelsKey]} - ${s[this.orderTotalKey].toFixed(2)}`);

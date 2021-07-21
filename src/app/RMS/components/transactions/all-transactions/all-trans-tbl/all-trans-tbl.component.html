@@ -1,0 +1,35 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="card">
+            <div class="table-responsive">
+                <nz-table 
+                    [nzFrontPagination]="false"
+                    [nzData]="data" 
+                    [nzLoading]="loading"
+                    [nzTotal]="pages.page_count"
+                    [nzPageSize]="20"
+                    [nzPageIndex]="1"
+                    [nzScroll]="{ x: '240px' }"
+                    (nzPageIndexChange)="onPageChange($event)"
+                    class="table forms-table table-striped table-bordered"
+                    *ngIf="data.length >= 1">
+                    <thead>
+                      <tr class="bg-light"> 
+                        <th *ngFor="let head of header; let i = index">
+                            {{head}}
+                        </th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let allData of data; let i = index" >
+                            <td 
+                                *ngFor="let d of allData | render" 
+                                class="hide-long-text">{{allData[d]}}</td>
+                        </tr>
+                    </tbody>
+                </nz-table>
+                <nz-table [nzData]="data" *ngIf="data.length == 0"></nz-table>              
+            </div>  
+        </div>
+    </div>
+</div>
