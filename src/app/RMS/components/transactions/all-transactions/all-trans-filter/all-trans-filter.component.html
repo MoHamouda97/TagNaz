@@ -22,7 +22,7 @@
                         nzShowSearch 
                         nzAllowClear 
                         nzPlaceHolder="Filter By user"
-                        (ngModelChange)="filter($event)">
+                        (ngModelChange)="filter('[Filter][user_id]', $event)">
                         <nz-option 
                             *ngFor="let user of users" 
                             [nzLabel]="user[1]" 
@@ -30,13 +30,29 @@
                     </nz-select>                     
                 </div>
                 <div class="col">
-                    <input nz-input type="number" min="0" placeholder="Filter by value" />
+                    <input 
+                        nz-input 
+                        type="number" 
+                        min="0" 
+                        #value
+                        placeholder="Filter by value"
+                        (keyup.enter)="filter('[Filter][value]', value.value)" />
                 </div>
                 <div class="col">
-                    <input nz-input type="number" min="0" placeholder="Filter by last credit" />
+                    <input 
+                        nz-input 
+                        type="number" 
+                        min="0"
+                        #lastcredit
+                        placeholder="Filter by last credit"
+                        (keyup.enter)="filter('[Filter][lastcredit]', lastcredit.value)" />
                 </div>
-                <div class="col">
-                    <nz-date-picker></nz-date-picker>
+            </div>
+            <div class="row">
+                <div class="col" style="direction: ltr; margin-top: 10px;">
+                    <nz-range-picker 
+                        [(ngModel)]="date" 
+                        (ngModelChange)="filter('Filter[created][_start_] Filter[created][_end_]', $event, 'date')"></nz-range-picker>
                 </div>
             </div>
         </div>

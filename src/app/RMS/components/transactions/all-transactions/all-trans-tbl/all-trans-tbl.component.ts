@@ -44,6 +44,9 @@ export class AllTransTblComponent implements OnInit, OnChanges {
           case 'loading' : 
             this.loading = changes.loading.currentValue;
             break;
+          case 'pages' : 
+            this.pages = changes.pages.currentValue;
+            break;
         }
       }
     }

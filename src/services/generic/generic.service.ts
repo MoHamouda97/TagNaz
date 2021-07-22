@@ -25,10 +25,6 @@ export class GenericService {
         month = '' + (d.getMonth() + 1), 
         day = '' + d.getDate(),
         year = d.getFullYear();
-    
-    if(type != '') {
-      month = '' + (parseInt(month) + 2)
-    }
       
     if (month.length < 2)
       month = '0' + month;
@@ -36,7 +32,7 @@ export class GenericService {
       day = '0' + day;
     
     if(type != '')
-      return `${month}/${day}/${year}`;
+      return `${year}-${month}-${day}`;
 
     return `${day}/${month}/${year}`;
   }
