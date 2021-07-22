@@ -33,7 +33,7 @@ export class AllTransFilterComponent implements OnInit {
     formData.append(filter, val);
 
     this.loading.emit(true);
-    console.log(`${filter} - ${val}`)
+
     const data: any = await this.service.filterTransactions(formData).toPromise(); 
     
     this.data.emit(data.data);
