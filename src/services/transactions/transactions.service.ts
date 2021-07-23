@@ -33,7 +33,7 @@ export class TransactionssService {
   }
 
   filterTransactions(filter) {
-    return this.http.post(`${environment.endpoint}/Transactions.json`, filter)
+    return this.http.post(`http://credit.codesroots.com/api/Transactions/index.json`, filter)
   }
 
 }

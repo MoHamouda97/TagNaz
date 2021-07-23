@@ -5,11 +5,11 @@
                 <div class="col">
                     <nz-select 
                         style="width: 100%;" 
-                        [(ngModel)]="selectedUser"
+                        [(ngModel)]="selectedOffice"
                         nzShowSearch 
                         nzAllowClear 
                         nzPlaceHolder="Filter By office"
-                        (ngModelChange)="filter('[Filter][office_id]', $event)">
+                        (ngModelChange)="filter('Filter[office_id]', $event)">
                         <nz-option 
                             *ngFor="let user of users" 
                             [nzLabel]="user[1]" 
@@ -19,10 +19,11 @@
                 <div class="col">
                     <nz-select 
                         style="width: 100%;" 
+                        [(ngModel)]="selectedUser"
                         nzShowSearch 
                         nzAllowClear 
                         nzPlaceHolder="Filter By user"
-                        (ngModelChange)="filter('[Filter][user_id]', $event)">
+                        (ngModelChange)="filter('Filter[user_id]', $event)">
                         <nz-option 
                             *ngFor="let user of users" 
                             [nzLabel]="user[1]" 
@@ -36,7 +37,7 @@
                         min="0" 
                         #value
                         placeholder="Filter by value"
-                        (keyup.enter)="filter('[Filter][value]', value.value)" />
+                        (keyup.enter)="filter('Filter[value]', value.value)" />
                 </div>
                 <div class="col">
                     <input 
@@ -45,7 +46,7 @@
                         min="0"
                         #lastcredit
                         placeholder="Filter by last credit"
-                        (keyup.enter)="filter('[Filter][lastcredit]', lastcredit.value)" />
+                        (keyup.enter)="filter('Filter[lastcredit]', lastcredit.value)" />
                 </div>
             </div>
             <div class="row">

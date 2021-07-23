@@ -15,6 +15,7 @@ export class AllTransFilterComponent implements OnInit {
 
   one: number = 1;
   selectedUser: any = null;
+  selectedOffice: any = null;
   date: any = '';
 
   constructor(private service: TransactionssService, private generic: GenericService) { }
@@ -27,15 +28,21 @@ export class AllTransFilterComponent implements OnInit {
 
     const formData = new FormData(); 
 
-    if (type == 'date') val = this.generic.formatDate(this.date[0], 'filter');
-    if (type == 'date') val += ` ${this.generic.formatDate(this.date[1], 'filter')}`
+    if (type == 'date') {
+      val = this.generic.formatDate(this.date[0], 'filter');
+      formData.append('Filter[created][__start__]', val);
+    }
 
-    formData.append(filter, val);
+    
+    if (type == 'date') {
+      val = this.generic.formatDate(this.date[1], 'filter');
+      formData.append('Filter[created][__end__]', val);
+    } else formData.append(filter, val);
 
     this.loading.emit(true);
 
     const data: any = await this.service.filterTransactions(formData).toPromise(); 
-    
+
     this.data.emit(data.data);
     this.pages.emit(data.pagination);
     this.loading.emit(false);
